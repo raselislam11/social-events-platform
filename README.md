@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shohojog — Social Development Events Platform
+
+**Live Site:** https://your-live-site-url.vercel.app
+
+Shohojog (meaning "helping hands") is a community-driven event management
+platform where anyone can create, join and track social service events near
+them — from winter clothes distributions to cleanup drives and plantations.
+
+## Key Features
+
+- **Create, Join & Track Events** — Any logged-in user can create a social
+  service event (with future-date validation) and join events hosted by
+  others; every join is stored in the database and visible in the *Joined
+  Events* page, sorted by event date.
+- **Secure Authentication** — Email/password registration with uppercase,
+  lowercase and length validation, Google social login, protected private
+  routes (page reloads never kick a logged-in user back to the login page)
+  and JWT-based API authorization.
+- **Owner-Only Event Management** — Organizers can update or delete their own
+  events from the *Manage Events* page; ownership is enforced on the server
+  with a dedicated owner-verification middleware.
+- **Curated Home Experience** — Themed banner, feature showcase, latest six
+  upcoming events straight from MongoDB, community photo gallery and a
+  newsletter section.
+- **Dark / Light Theme Toggle** — A single click switches the entire
+  application between a warm light theme and a cosy dark theme.
+- **Polished UX** — Responsive design for mobile/tablet/desktop, loading
+  skeletons everywhere data is fetched, custom modal confirmations and toast
+  notifications (never the default browser alert), and an intuitive profile
+  update flow.
+
+## Tech Stack
+
+| Layer  | Technologies                                                        |
+| ------ | -------------------------------------------------------------------- |
+| Client | Next.js (App Router), TypeScript, Tailwind CSS, DaisyUI, BetterAuth  |
+| API    | Express.js, TypeScript, MongoDB, JWT (jose)                          |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# client
+cd client && npm install && npm run dev
+
+# server
+cd server && npm install && npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Configure the environment files (`.env.local` for the client, `.env` for the
+server) from the provided `.example` values: `MONGODB_URI`,
+`BETTER_AUTH_SECRET`, Google OAuth credentials and the API base URL.
